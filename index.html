@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mangalam HDPE Pipes – Premium HDPE Pipes & Coils for Modern Infrastructure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MODAL 1: Let us email the entire catalogue to you
+     Triggers: "Download Full Technical Datasheet" + "Request Catalogue"
+═══════════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modalCatalogue" role="dialog" aria-modal="true" aria-labelledby="catModalTitle" hidden>
+  <div class="modal">
+    <button class="modal__close" id="closeCatalogue" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <h3 class="modal__title" id="catModalTitle">Let us email the entire catalogue to you</h3>
+    <div class="modal__field">
+      <label class="modal__label" for="catEmail">Your Email <span class="req">*</span></label>
+      <input class="modal__input" id="catEmail" type="email" placeholder="example@gmail.com" required/>
+    </div>
+    <div class="modal__field">
+      <label class="modal__label" for="catPhone">Your Contact <span class="modal__optional">(Optional)</span></label>
+      <input class="modal__input" id="catPhone" type="tel" placeholder="+91-0000000000"/>
+    </div>
+    <button class="btn btn--primary btn--full modal__submit" onclick="handleCatSubmit()">Send Catalogue</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MODAL 2: Request a call back
+     Triggers: "Get Custom Quote" + "Request a Quote" + sticky CTA
+═══════════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modalQuote" role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle" hidden>
+  <div class="modal">
+    <button class="modal__close" id="closeQuote" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <h3 class="modal__title" id="quoteModalTitle">Request a call back</h3>
+    <div class="modal__field">
+      <input class="modal__input" id="qName"    type="text"  placeholder="Full Name"       aria-label="Full Name"/>
+    </div>
+    <div class="modal__field">
+      <input class="modal__input" id="qCompany" type="text"  placeholder="Company Name"    aria-label="Company Name"/>
+    </div>
+    <div class="modal__field">
+      <input class="modal__input" id="qEmail"   type="email" placeholder="Email Address"   aria-label="Email Address"/>
+    </div>
+    <div class="modal__phone-row">
+      <div class="modal__phone-code">
+        +91
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M2 4l3 3 3-3" stroke="#374151" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <input class="modal__input modal__input--phone" id="qPhone" type="tel" placeholder="7003026616" aria-label="Phone number"/>
+    </div>
+    <button class="btn btn--primary btn--full modal__submit" onclick="handleQuoteSubmit()">Submit Form</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STICKY PRODUCT BAR
+     Slides down from top once user scrolls past the hero.
+     Shows: product thumb + title + price + Get Custom Quote btn
+═══════════════════════════════════════════════════════════════ -->
+<div class="sticky-bar" id="stickyBar" aria-hidden="true">
+  <div class="sticky-bar__inner">
+    <div class="sticky-bar__product">
+      <img class="sticky-bar__thumb" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=80&q=70" alt="HDPE Pipe product"/>
+      <div class="sticky-bar__info">
+        <p class="sticky-bar__name">Premium HDPE Pipes &amp; Coils for Modern Infrastructure</p>
+        <p class="sticky-bar__price">₹4,80,000 – 7,90,000</p>
+      </div>
+    </div>
+    <button class="btn btn--primary btn--sm" onclick="openModal('quote')">Get Custom Quote</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN NAV HEADER
+═══════════════════════════════════════════════════════════════ -->
+<header class="header" id="mainHeader">
+  <div class="wrap header__inner">
+    <a href="/" class="logo" aria-label="Mangalam HDPE Pipes">
+      <span class="logo__main">MangaIam</span>
+      <span class="logo__sub">HDPE | PIPES</span>
+    </a>
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
+      <a href="#" class="nav__link">About Us</a>
+      <a href="#" class="nav__link">
+        Products
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </a>
+      <button class="btn btn--primary btn--sm" onclick="openModal('quote')">Contact Us</button>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO – PRODUCT PAGE
+═══════════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="wrap">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="#">Products</a>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.5 3.5L9 7l-3.5 3.5" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Two For One Twister</span>
+    </nav>
+
+    <div class="hero__grid">
+
+      <!-- LEFT: Image Gallery -->
+      <div class="gallery" aria-label="Product images">
+        <div class="gallery__main" id="galleryMain">
+          <button class="gallery__arr gallery__arr--l" id="galPrev" aria-label="Previous image">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <img id="mainImg"
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80"
+            alt="HDPE pipe coils being manufactured"/>
+          <button class="gallery__zoom" id="galZoom" aria-label="Zoom image">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          </button>
+          <button class="gallery__arr gallery__arr--r" id="galNext" aria-label="Next image">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <!-- Thumbnails -->
+        <div class="gallery__thumbs" id="galThumbs" role="list">
+          <button class="gallery__thumb active" data-idx="0" role="listitem"
+            data-full="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=120&q=60" alt="Image 1"/>
+          </button>
+          <button class="gallery__thumb" data-idx="1" role="listitem"
+            data-full="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=700&q=80">
+            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=120&q=60" alt="Image 2"/>
+          </button>
+          <button class="gallery__thumb" data-idx="2" role="listitem"
+            data-full="https://images.unsplash.com/photo-1581092921461-7031e27a7e90?w=700&q=80">
+            <img src="https://images.unsplash.com/photo-1581092921461-7031e27a7e90?w=120&q=60" alt="Image 3"/>
+          </button>
+          <button class="gallery__thumb" data-idx="3" role="listitem"
+            data-full="https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=700&q=80">
+            <img src="https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=120&q=60" alt="Image 4"/>
+          </button>
+          <button class="gallery__thumb" data-idx="4" role="listitem"
+            data-full="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=700&q=80">
+            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=120&q=60" alt="Image 5"/>
+          </button>
+          <button class="gallery__thumb" data-idx="5" role="listitem"
+            data-full="https://images.unsplash.com/photo-1581092921461-7031e27a7e90?w=700&q=80">
+            <img src="https://images.unsplash.com/photo-1581092921461-7031e27a7e90?w=120&q=60" alt="Image 6"/>
+          </button>
+        </div>
+      </div>
+
+      <div class="zoom-overlay" id="zoomOverlay" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+        <div class="zoom-overlay__inner">
+          <button class="zoom-overlay__close" id="zoomClose" aria-label="Close zoom view">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M14 4L4 14M4 4l10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <img id="zoomImg" src="" alt="Zoomed product image" />
+        </div>
+      </div>
+
+      <!-- RIGHT: Product details -->
+      <div class="product">
+        <!-- Certification badges -->
+        <div class="cert-row">
+          <span class="cert">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 4.9 5.6.8-4.1 3.9.9 5.5L12 14.5l-4.8 2.6.9-5.5L4 7.7l5.6-.8L12 2z" stroke="#2D3B8E" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            BIS Certified
+          </span>
+          <span class="cert">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#2D3B8E" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#2D3B8E" stroke-width="1.5" stroke-linecap="round"/></svg>
+            ISO Certified
+          </span>
+          <span class="cert">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z" stroke="#2D3B8E" stroke-width="1.5"/><path d="M9 12l2 2 4-4" stroke="#2D3B8E" stroke-width="1.5" stroke-linecap="round"/></svg>
+            CE Certified
+          </span>
+        </div>
+
+        <h1 class="product__title">Premium HDPE Pipes &amp; Coils for Modern Infrastructure</h1>
+
+        <ul class="product__list">
+          <li><span class="dot"></span>Leak-Proof Fusion Joints</li>
+          <li><span class="dot"></span>Chemical Resistance</li>
+          <li><span class="dot"></span>50+ Year Service Life</li>
+          <li><span class="dot"></span>Flexible Installation</li>
+          <li><span class="dot"></span>Flexible Installation</li>
+        </ul>
+
+        <div class="price-box">
+          <p class="price-box__label">Price Range</p>
+          <p class="price-box__value">₹4,80,000 - 7,90,000</p>
+          <div class="price-box__tags">
+            <span class="ptag">Shipping: 6-12 days</span>
+            <span class="ptag">Returns: If returned within 7 days</span>
+          </div>
+          <p class="price-box__cert">Certifications: ISO Certified, BIS Certified</p>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn btn--primary btn--md" onclick="openModal('quote')">Get Custom Quote</button>
+          <a href="#specs" class="btn btn--outline btn--md">
+            View Technical Specs
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M5 3l4 3.5L5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust bar -->
+    <div class="trust-bar">
+      <p class="trust-bar__label">Trusted by Hundreds of Companies Globally</p>
+      <div class="trust-bar__logos">
+        <div class="ef"><span class="ef__name">EUR<span class="ef__o">O</span>FLEX</span><span class="ef__sub">WE CREATE SOLUTIONS</span></div>
+        <div class="ef"><span class="ef__name">EUR<span class="ef__o">O</span>FLEX</span><span class="ef__sub">WE CREATE SOLUTIONS</span></div>
+        <div class="ef"><span class="ef__name">EUR<span class="ef__o">O</span>FLEX</span><span class="ef__sub">WE CREATE SOLUTIONS</span></div>
+        <div class="ef"><span class="ef__name">EUR<span class="ef__o">O</span>FLEX</span><span class="ef__sub">WE CREATE SOLUTIONS</span></div>
+        <div class="ef"><span class="ef__name">EUR<span class="ef__o">O</span>FLEX</span><span class="ef__sub">WE CREATE SOLUTIONS</span></div>
+        <div class="ef"><span class="ef__name">EUR<span class="ef__o">O</span>FLEX</span><span class="ef__sub">WE CREATE SOLUTIONS</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TECHNICAL SPECIFICATIONS
+═══════════════════════════════════════════════════════════════ -->
+<section class="specs-section" id="specs">
+  <div class="wrap">
+    <h2 class="sh sh--white">Technical Specifications at a Glance</h2>
+    <p class="ss ss--muted">Comprehensive performance data demonstrating our commitment to quality and engineering excellence.</p>
+    <div class="specs-table-wrap">
+      <table class="specs-table" aria-label="Technical specifications">
+        <thead>
+          <tr><th scope="col">Parameter</th><th scope="col">Specification</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pipe Diameter Range</td><td>20mm to 1600mm (3/4" to 63")</td></tr>
+          <tr><td>Pressure Ratings</td><td>PN 2.5, PN 4, PN 6, PN 8, PN 10, PN 12.5, PN 16</td></tr>
+          <tr><td>Standard Dimension Ratio</td><td>SDR 33, SDR 26, SDR 21, SDR 17, SDR 13.6, SDR 11</td></tr>
+          <tr><td>Operating Temperature</td><td>-40C to +80C (-40F to +176F)</td></tr>
+          <tr><td>Service Life</td><td>50+ Years (at 20 degrees C, PN 10)</td></tr>
+          <tr><td>Material Density</td><td>0.95 - 0.96 g/cm3</td></tr>
+          <tr><td>Certification Standards</td><td>IS 5984, ISO 4427, ASTM D3035</td></tr>
+          <tr><td>Joint Type</td><td>Butt Fusion, Electrofusion, Mechanical</td></tr>
+          <tr><td>Coil Lengths</td><td>Up to 500mm (for smaller diameters)</td></tr>
+          <tr><td>Country of Origin</td><td>🇮🇳 India</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="specs-cta">
+      <!-- Triggers catalogue modal -->
+      <button class="btn-outline-white" onclick="openModal('catalogue')">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8m0 0l-2.5-2.5M8 10l2.5-2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 12.5h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Download Full Technical Datasheet
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     BUILT TO LAST – FEATURES
+═══════════════════════════════════════════════════════════════ -->
+<section class="features-section">
+  <div class="wrap">
+    <h2 class="sh">Built to Last. Engineered to Perform.</h2>
+    <p class="ss">From bulk bags to technical threads, Meera delivers precision solutions for every stage of your packaging process.</p>
+    <div class="features-grid">
+      <article class="fcard">
+        <div class="fcard__icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C5.5 2 1 6.5 1 12s4.5 10 10 10 10-4.5 10-10S16.5 2 11 2z" stroke="#2D3B8E" stroke-width="1.5"/><path d="M7 11h8M11 7v8" stroke="#2D3B8E" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Superior Chemical Resistance</h3>
+        <p>HDPE pipes resist a wide range of chemicals, acids, and alkalis. Unlike metal pipes, they won't corrode, rust, or scale, ensuring pure water quality and extended service life in aggressive environments.</p>
+      </article>
+      <article class="fcard">
+        <div class="fcard__icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2 4.5 5 .7-3.5 3.4.8 5-4.3-2.3-4.3 2.3.8-5L4 7.2l5-.7L11 2z" stroke="#2D3B8E" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Exceptional Flexibility &amp; Durability</h3>
+        <p>HDPE pipes resist a wide range of chemicals, acids, and alkalis. Unlike metal pipes, they won't corrode, rust, or scale, ensuring pure water quality and extended service life in aggressive environments.</p>
+      </article>
+      <article class="fcard">
+        <div class="fcard__icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="11" width="16" height="9" rx="1.5" stroke="#2D3B8E" stroke-width="1.5"/><path d="M7 11V8a4 4 0 018 0v3" stroke="#2D3B8E" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Leak-Proof Fusion Welding</h3>
+        <p>HDPE pipes resist a wide range of chemicals, acids, and alkalis. Unlike metal pipes, they won't corrode, rust, or scale, ensuring pure water quality and extended service life in aggressive environments.</p>
+      </article>
+      <article class="fcard">
+        <div class="fcard__icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#2D3B8E" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#2D3B8E" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Cost-Effective Long-Term Solution</h3>
+        <p>HDPE pipes resist a wide range of chemicals, acids, and alkalis. Unlike metal pipes, they won't corrode, rust, or scale, ensuring pure water quality and extended service life in aggressive environments.</p>
+      </article>
+      <article class="fcard">
+        <div class="fcard__icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 21s9-4.5 9-11V4L11 1 2 4v6c0 6.5 9 11 9 11z" stroke="#2D3B8E" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Environmentally Sustainable</h3>
+        <p>HDPE pipes resist a wide range of chemicals, acids, and alkalis. Unlike metal pipes, they won't corrode, rust, or scale, ensuring pure water quality and extended service life in aggressive environments.</p>
+      </article>
+      <article class="fcard">
+        <div class="fcard__icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#2D3B8E" stroke-width="1.5"/><path d="M8 11l2.5 2.5 4-4" stroke="#2D3B8E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Certified Quality Assurance</h3>
+        <p>HDPE pipes resist a wide range of chemicals, acids, and alkalis. Unlike metal pipes, they won't corrode, rust, or scale, ensuring pure water quality and extended service life in aggressive environments.</p>
+      </article>
+    </div>
+    <div class="section-cta">
+      <button class="btn btn--primary btn--md" onclick="openModal('quote')">Request a Quote</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="wrap">
+    <h2 class="sh"><em class="em-blue">Frequently</em> Asked Questions</h2>
+    <p class="ss">It is designed to cut various types of sheet metal with precision, allowing for intricate designs and shapes that are invaluable in manufacturing processes.</p>
+
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>What is the purpose of a laser cutter for sheet metal?<span class="faq-chevron" aria-hidden="true"></span></summary>
+        <p>It is designed to cut various types of sheet metal with precision, allowing for intricate designs and shapes that are essential in manufacturing processes.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What are the benefits of using aluminum tubing in manufacturing?<span class="faq-chevron" aria-hidden="true"></span></summary>
+        <p>Aluminum tubing offers an excellent strength-to-weight ratio, corrosion resistance, and thermal conductivity, making it ideal for many applications.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How is aluminum tubing produced?<span class="faq-chevron" aria-hidden="true"></span></summary>
+        <p>Aluminum tubing is produced through extrusion or drawing processes where billets are forced through a die to form the desired profile.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What are the common applications of aluminum tubing?<span class="faq-chevron" aria-hidden="true"></span></summary>
+        <p>Common applications include structural frameworks, fluid transfer, heat exchangers, electrical conduits, and sporting equipment.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can aluminum tubing be customized?<span class="faq-chevron" aria-hidden="true"></span></summary>
+        <p>Yes, aluminum tubing can be fully customized in diameter, wall thickness, alloy grade, and surface finish.</p>
+      </details>
+    </div>
+
+    <!-- Catalogue email bar – triggers catalogue modal -->
+    <div class="cat-bar">
+      <div class="cat-bar__text">
+        <p class="cat-bar__title">Want us to email the entire catalogue?</p>
+        <p class="cat-bar__sub">Enter your email and an expert will share the catalogue with you.</p>
+      </div>
+      <div class="cat-bar__action">
+        <input type="email" class="cat-input" placeholder="Email Address" aria-label="Email for catalogue"/>
+        <button class="btn btn--primary btn--md" onclick="openModal('catalogue')">Request Catalogue</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CAROUSEL – VERSATILE APPLICATIONS
+     Cards overflow viewport | hover = zoom preview floats near cursor
+═══════════════════════════════════════════════════════════════ -->
+<section class="carousel-section" id="carousel">
+  <div class="wrap carousel-header">
+    <div>
+      <h2 class="sh">Versatile Applications Across Industries</h2>
+      <p class="ss">From technical textiles to packaging materials, our precision-engineered machinery delivers superior performance across diverse applications.</p>
+    </div>
+    <div class="carousel-navs">
+      <button class="carnav" id="carPrev" aria-label="Previous slide">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="carnav" id="carNext" aria-label="Next slide">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <!-- Track bleeds to viewport edges -->
+  <div class="carousel-viewport">
+    <div class="carousel-track" id="carTrack">
+      <div class="ccard" tabindex="0">
+        <img class="ccard__img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&q=75" alt="Fishnet Manufacturing" loading="lazy"/>
+        <div class="ccard__zoom" aria-hidden="true"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=85" alt=""/></div>
+        <div class="ccard__overlay"><h4>Fishnet Manufacturing</h4><p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p></div>
+      </div>
+      <div class="ccard" tabindex="0">
+        <img class="ccard__img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=75" alt="Fishnet Manufacturing" loading="lazy"/>
+        <div class="ccard__zoom" aria-hidden="true"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85" alt=""/></div>
+        <div class="ccard__overlay"><h4>Fishnet Manufacturing</h4><p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p></div>
+      </div>
+      <div class="ccard" tabindex="0">
+        <img class="ccard__img" src="https://images.unsplash.com/photo-1581092921461-7031e27a7e90?w=500&q=75" alt="Fishnet Manufacturing" loading="lazy"/>
+        <div class="ccard__zoom" aria-hidden="true"><img src="https://images.unsplash.com/photo-1581092921461-7031e27a7e90?w=800&q=85" alt=""/></div>
+        <div class="ccard__overlay"><h4>Fishnet Manufacturing</h4><p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p></div>
+      </div>
+      <div class="ccard" tabindex="0">
+        <img class="ccard__img" src="https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=500&q=75" alt="Fishnet Manufacturing" loading="lazy"/>
+        <div class="ccard__zoom" aria-hidden="true"><img src="https://images.unsplash.com/photo-1567361808960-dec9cb578182?w=800&q=85" alt=""/></div>
+        <div class="ccard__overlay"><h4>Fishnet Manufacturing</h4><p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p></div>
+      </div>
+      <div class="ccard" tabindex="0">
+        <img class="ccard__img" src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&q=75" alt="Fishnet Manufacturing" loading="lazy"/>
+        <div class="ccard__zoom" aria-hidden="true"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=85" alt=""/></div>
+        <div class="ccard__overlay"><h4>Fishnet Manufacturing</h4><p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p></div>
+      </div>
+      <div class="ccard" tabindex="0">
+        <img class="ccard__img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=75" alt="Fishnet Manufacturing" loading="lazy"/>
+        <div class="ccard__zoom" aria-hidden="true"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85" alt=""/></div>
+        <div class="ccard__overlay"><h4>Fishnet Manufacturing</h4><p>High-performance twisting solutions for packaging yarn, strapping materials, and reinforcement threads used in modern packaging applications.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MANUFACTURING PROCESS
+═══════════════════════════════════════════════════════════════ -->
+<section class="process-section">
+  <div class="wrap">
+    <h2 class="sh sh--center">Advanced HDPE Pipe Manufacturing Process</h2>
+    <p class="ss ss--center">Our state-of-the-art extrusion technology ensures consistent quality, optimal material properties, and dimensional accuracy in every pipe we manufacture.</p>
+
+    <!-- Pill tabs -->
+    <div class="proc-tabs" id="procTabs" role="tablist">
+      <button class="proc-tab active" data-step="0" role="tab" aria-selected="true">Raw Material</button>
+      <button class="proc-tab" data-step="1" role="tab" aria-selected="false">Extrusion</button>
+      <button class="proc-tab" data-step="2" role="tab" aria-selected="false">Cooling</button>
+      <button class="proc-tab" data-step="3" role="tab" aria-selected="false">Sizing</button>
+      <button class="proc-tab" data-step="4" role="tab" aria-selected="false">Quality Control</button>
+      <button class="proc-tab" data-step="5" role="tab" aria-selected="false">Marking</button>
+      <button class="proc-tab" data-step="6" role="tab" aria-selected="false">Cutting</button>
+      <button class="proc-tab" data-step="7" role="tab" aria-selected="false">Packaging</button>
+    </div>
+
+    <div class="proc-card" id="procCard">
+      <div class="proc-card__text">
+        <h3 id="procTitle">High-Grade Raw Material Selection</h3>
+        <p id="procDesc">Vacuum sizing tanks ensure precise outer diameter while internal pressure maintains perfect roundness and wall thickness uniformity.</p>
+        <ul class="proc-checks" id="procChecks">
+          <li><span class="dot"></span>PE100 grade material</li>
+          <li><span class="dot"></span>Optimal molecular weight distribution</li>
+        </ul>
+      </div>
+      <div class="proc-card__img-wrap">
+        <button class="proc-arr proc-arr--l" id="procImgPrev" aria-label="Previous">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <img id="procImg" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Manufacturing step"/>
+        <button class="proc-arr proc-arr--r" id="procImgNext" aria-label="Next">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TRUSTED PERFORMANCE (Testimonials)
+═══════════════════════════════════════════════════════════════ -->
+<section class="testimonials-section">
+  <div class="wrap">
+    <h2 class="sh sh--center">Trusted Performance. Proven Results.</h2>
+    <p class="ss ss--center">From innovative Two-For-One Twisters to specialized heat setting machines, we deliver complete solutions for modern textile manufacturing.</p>
+    <div class="tgrid">
+      <div class="tcard">
+        <div class="tcard__q">"</div>
+        <p class="tcard__text">Revolutionized our FIBC production efficiency!</p>
+        <p class="tcard__body">Meera Industries' TFO machines have revolutionized our FIBC production efficiency. The precision engineering delivers the consistent yarn strength critical for our bulk liner applications.</p>
+        <div class="tcard__author">
+          <div class="av">JM</div>
+          <div><p class="tcard__name">Johann Mueller</p><p class="tcard__role">Production Director</p></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard__q">"</div>
+        <p class="tcard__text">Excellent support for specialized applications.</p>
+        <p class="tcard__body">The durability and performance of Meera's fishnet processing equipment has significantly improved our marine product quality. Excellent support for specialized applications.</p>
+        <div class="tcard__author">
+          <div class="av">CM</div>
+          <div><p class="tcard__name">Carlos Mendoza</p><p class="tcard__role">Operations Manager</p></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard__q">"</div>
+        <p class="tcard__text">Excellent support for specialized applications.</p>
+        <p class="tcard__body">The durability and performance of Meera's fishnet processing equipment has significantly improved our marine product quality. Excellent support for specialized applications.</p>
+        <div class="tcard__author">
+          <div class="av">CM</div>
+          <div><p class="tcard__name">Carlos Mendoza</p><p class="tcard__role">Operations Manager</p></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard__q">"</div>
+        <p class="tcard__text">Provides the exact specifications we need!</p>
+        <p class="tcard__body">For our technical textile applications, Meera's specialized machinery provides the exact specifications we need. Their understanding of automotive textile requirements is exceptional.</p>
+        <div class="tcard__author">
+          <div class="av">RK</div>
+          <div><p class="tcard__name">Rajesh Kumar</p><p class="tcard__role">Manufacturing Head</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     COMPLETE PIPING SOLUTIONS PORTFOLIO
+═══════════════════════════════════════════════════════════════ -->
+<section class="portfolio-section">
+  <div class="wrap">
+    <h2 class="sh sh--center">Complete Piping Solutions Portfolio</h2>
+    <p class="ss ss--center">From innovative Two-For-One Twisters to specialized heat setting machines, we deliver complete solutions for modern textile manufacturing.</p>
+    <div class="pgrid">
+      <article class="pcard">
+        <div class="pcard__body">
+          <h3>HDPE Fittings &amp; Accessories</h3>
+          <p>Complete range of electrofusion and butt fusion fittings, including elbows, tees, reducers, and couplers for seamless pipe connections.</p>
+        </div>
+        <div class="pcard__img-wrap">
+          <img src="https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=500&q=70" alt="Worker with HDPE fittings" loading="lazy"/>
+        </div>
+        <a href="#" class="btn btn--outline btn--sm pcard__btn">Learn More</a>
+      </article>
+      <article class="pcard">
+        <div class="pcard__body">
+          <h3>Professional Installation Services</h3>
+          <p>Expert installation and fusion welding services ensuring optimal system performance, compliance with standards, and long-term reliability.</p>
+        </div>
+        <div class="pcard__img-wrap">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&q=70" alt="Installation services" loading="lazy"/>
+        </div>
+        <a href="#" class="btn btn--outline btn--sm pcard__btn">Learn More</a>
+      </article>
+      <article class="pcard">
+        <div class="pcard__body">
+          <h3>PE-RT Heating Pipes</h3>
+          <p>Polyethylene of Raised Temperature resistance pipes ideal for underfloor heating, radiator connections, and hot water applications.</p>
+        </div>
+        <div class="pcard__img-wrap">
+          <img src="https://images.unsplash.com/photo-1504512485720-7d83a16ee930?w=500&q=70" alt="PE-RT Heating Pipes" loading="lazy"/>
+        </div>
+        <a href="#" class="btn btn--outline btn--sm pcard__btn">Learn More</a>
+      </article>
+    </div>
+
+    <!-- "Didn't find" banner -->
+    <div class="find-bar">
+      <div>
+        <p class="find-bar__title">Didn't find <span class="em-blue">what you're looking for?</span></p>
+        <p class="find-bar__sub">Talk to our experts for custom solutions and tailored guidance.</p>
+      </div>
+      <button class="btn btn--primary btn--sm" onclick="openModal('quote')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M13 8.5c0 3.6-3.6 5.5-5.5 5.5S2 12.1 2 8.5C2 5.7 4.2 3.5 7 3.5c1.2 0 2.3.4 3.1 1.1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M10 1.5v4h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Talk to an Expert
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     RESOURCES & DOWNLOADS
+═══════════════════════════════════════════════════════════════ -->
+<section class="resources-section">
+  <div class="wrap">
+    <h2 class="sh sh--center">Resources &amp; Downloads</h2>
+    <p class="ss ss--center">Get all the technical documentation and resources you need to make informed decisions about our HDPE piping solutions.</p>
+    <div class="res-list">
+      <div class="res-item">
+        <span>HDPE Pipe Installation Manual (PDF)</span>
+        <button class="res-link" onclick="openModal('catalogue')">
+          Download PDF
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7m0 0L4.5 6.5M7 9l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="res-item">
+        <span>Maintenance &amp; Inspection Handbook (PDF)</span>
+        <button class="res-link" onclick="openModal('catalogue')">
+          Download PDF
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7m0 0L4.5 6.5M7 9l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="res-item">
+        <span>Engineering Specifications Sheet (PDF)</span>
+        <button class="res-link" onclick="openModal('catalogue')">
+          Download PDF
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v7m0 0L4.5 6.5M7 9l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA – READY TO TRANSFORM
+═══════════════════════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="wrap">
+    <div class="cta-card">
+      <div class="cta-card__left">
+        <h2>Ready to Transform Your<br>Textile Manufacturing?</h2>
+        <p>Get a personalized consultation and quote for machinery solutions tailored to your specific production requirements.</p>
+        <p class="cta-card__contact">For immediate assistance, feel free to give us a direct call at <strong>+91-XXX-XXX-XXXX</strong>. You can also send us a quick email at <a href="mailto:info@meeraind.com">info@meeraind.com</a></p>
+      </div>
+      <div class="cta-card__form">
+        <p class="cta-form-label">Contact Us Today</p>
+        <input type="text"  class="cta-input" placeholder="Full Name"      aria-label="Full Name"/>
+        <input type="text"  class="cta-input" placeholder="Company Name"   aria-label="Company Name"/>
+        <input type="email" class="cta-input" placeholder="Email Address"  aria-label="Email Address"/>
+        <div class="cta-phone">
+          <div class="cta-phone__code">+91 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#374151" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <input type="tel" class="cta-input cta-input--phone" placeholder="7003026616" aria-label="Phone number"/>
+        </div>
+        <button class="btn-dark-full" onclick="openModal('quote')">Request Custom Quote</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <!-- Top row: logo box + tagline -->
+    <div class="footer__toprow">
+      <div class="footer__logobox">
+        <a href="/" class="logo" aria-label="Mangalam HDPE Pipes">
+          <span class="logo__main">MangaIam</span>
+          <span class="logo__sub">HDPE | PIPES</span>
+        </a>
+      </div>
+      <p class="footer__tagline">Premium <strong>HDPE Pipes &amp; Fittings</strong><br><strong>Manufacturer</strong> in South India</p>
+    </div>
+    <!-- Link columns -->
+    <div class="footer__cols">
+      <div class="footer__col">
+        <h4>About Us</h4>
+        <a href="#">About Us</a>
+      </div>
+      <div class="footer__col">
+        <h4>Categories</h4>
+        <a href="#">Packaging Industry Solutions</a>
+        <a href="#">Fishnet Manufacturing</a>
+        <a href="#">PPMF/Tapes and Twines</a>
+        <a href="#">FIBC and Woven Sack</a>
+        <a href="#">Carpet and Rugs Industry</a>
+        <a href="#">Technical Textiles</a>
+      </div>
+      <div class="footer__col">
+        <h4>Products</h4>
+        <a href="#">Two For One Twister</a>
+        <a href="#">TPRS Twister Machine</a>
+        <a href="#">Ring Twisting Machines</a>
+        <a href="#">Covering Machines</a>
+        <a href="#">Heat Setting Equipment</a>
+        <a href="#">Servo Controlled Winders</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <p class="fc-item">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1C4.6 1 3 2.6 3 4.5c0 3 3.5 7 3.5 7S10 7.5 10 4.5C10 2.6 8.4 1 6.5 1zm0 4.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="#2D3B8E"/></svg>
+          2126, Road No. 2, GIDC Sachin, Surat - 394 230 Gujarat, India
+        </p>
+        <p class="fc-item">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 8c0 .2 0 .4-.1.5-.2.5-.7 1-1.3 1.2-.3.1-.7.1-1 0C6.3 9 3.2 6 2.9 3.4c0-.3 0-.7.1-1C3.2 1.8 3.7 1.3 4.2 1c.1-.1.3-.1.4 0L6 2.7c.1.2.1.3 0 .5L5.4 3.8c.3.5.6 1 1 1.4.4.4.9.7 1.3 1l.6-.6c.2-.2.3-.2.5 0L10.6 7.3c.3.2.4.5.4.7z" stroke="#2D3B8E" stroke-width="1.1"/></svg>
+          +91-XXX-XXX-XXXX
+        </p>
+        <p class="fc-item">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="3" width="11" height="8" rx="1" stroke="#2D3B8E" stroke-width="1.1"/><path d="M1 4l5.5 4L12 4" stroke="#2D3B8E" stroke-width="1.1" stroke-linecap="round"/></svg>
+          info@meeraind.com
+        </p>
+        <p class="fc-item">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="3" width="11" height="8" rx="1" stroke="#2D3B8E" stroke-width="1.1"/><path d="M1 4l5.5 4L12 4" stroke="#2D3B8E" stroke-width="1.1" stroke-linecap="round"/></svg>
+          support@meeraind.com
+        </p>
+        <div class="footer__social">
+          <a href="#" aria-label="LinkedIn"  class="sicon">in</a>
+          <a href="#" aria-label="X"         class="sicon">𝕏</a>
+          <a href="#" aria-label="Instagram" class="sicon">◎</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bottom bar -->
+  <div class="footer__bottom">
+    <div class="wrap footer__bottom-inner">
+      <span>Copyright © 2025 Meera Industries Limited | All Rights Reserved</span>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
